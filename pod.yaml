@@ -1,14 +1,10 @@
-apiVersion: apps/v1
-kind: Pods
+apiVersion: v1
+kind: Pod
 metadata:
-  name: hello
   labels:
-    app: hello
+    run: nginx
+  name: nginx
 spec:
-  spec:
-      containers:
-      - image: nginx
-        name: hello
-        ports:
-        - containerPort: 80
-          name: hello
+  containers:
+  - image: nginx
+    name: nginx
