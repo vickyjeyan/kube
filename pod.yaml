@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Pods
+metadata:
+  name: hello
+  labels:
+    app: hello
+spec:
+  spec:
+      containers:
+      - image: nginx
+        name: hello
+        ports:
+        - containerPort: 80
+          name: hello
