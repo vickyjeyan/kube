@@ -14,7 +14,7 @@ node {
 
     stage "Build"
     
-        sh "docker build -t ${imageName} -f "applications/jboss/Dockerfile applications/jboss
+        sh "docker build -t ${imageName} -f applications/jboss/Dockerfile applications/jboss"
     
     stage "Push"
 
