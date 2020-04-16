@@ -1,37 +1,18 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: jboss-pod
-  labels:
-    app: app
+  name: green1
 spec:
-  containers:
-    - name: jboss
-      ports:
-        - name: http
-          containerPort: 8080
-        - name: mgmt
-          containerPort: 9990
-      image: jboss/wildfly
-      command: ["/bin/sh", "-c"]
-      args: ["/opt/jboss/wildfly/bin/add-user.sh admin Admin#70365 --silent; /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0"]
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: jbossservice1
-  labels:
-    app: app
-spec:
-  type: NodePort
-  ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
-      nodePort:
-    - name: mgmt
-      port: 9990
-      targetPort: 9990
+  replicas: 4
+  template:
+    metadata:
+      name: blue
+      labels:
+        app: green
+    spec:
+      containers:
+        - name: cont
+          image: httpd
   selector:
-      app: app     
+    matchLabels:
+      app: green
