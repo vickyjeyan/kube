@@ -22,6 +22,6 @@ node {
 
     stage "Deploy"
 
-        kubernetesDeploy configs: "applications/${appName}/kube/*.yaml", kubeconfigId: 'jen_kubeconfig'
+        kubernetesDeploy configs: "applications/${appName}/kube/*.yaml", kubeconfigId: 'kube'
 
 }
